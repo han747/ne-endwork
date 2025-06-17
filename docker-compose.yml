@@ -1,0 +1,18 @@
+version: '2.3'
+services:
+  control:
+    build: .
+    container_name: data-screen-controller
+    volumes:
+      - ./ansible:/etc/ansible
+      - ./ssh_keys:/root/.ssh
+      - ./html:/var/www/html
+    ports:
+      - "8080:80"
+      - "2222:22"
+    networks:
+      - data_screen_net
+
+networks:
+  data_screen_net:
+    driver: bridge
