@@ -1,0 +1,13 @@
+[all]
+192.168.20.136 ansible_ssh_user=root ansible_ssh_pass=kingsely
+
+[web_servers]
+192.168.20.133 ansible_ssh_user=root ansible_ssh_pass=123456
+192.168.20.132 ansible_ssh_user=root ansible_ssh_pass=kingsely
+192.168.20.136 ansible_ssh_user=root ansible_ssh_pass=kingsely
+192.168.20.135 ansible_ssh_user=root ansible_ssh_pass=030213
+
+[db_servers]
+192.168.20.136
+
+

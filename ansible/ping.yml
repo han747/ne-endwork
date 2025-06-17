@@ -1,0 +1,18 @@
+- name: Gather host facts and ping
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Ping test
+      ping:
+      register: ping_result
+      
+    - name: Save result to file
+      copy:
+        content: |
+          Host: {{ inventory_hostname }}
+          IP: {{ ansible_default_ipv4.address | default('unknown') }}
+          Status: {{ ping_result is success }}
+          Last Checked: {{ ansible_date_time.iso8601 }}
+          Details: {{ ping_result }}
+        dest: /var/www/html/output/{{ inventory_hostname }}.txt
+      delegate_to: localhost
